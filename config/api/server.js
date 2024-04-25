@@ -9,6 +9,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const connexionDB_1 = __importDefault(require("../connexion/connexionDB"));
 const billRoute_1 = __importDefault(require("../../app/bills/route/billRoute"));
+const categoryRoute_1 = __importDefault(require("../../app/category/route/categoryRoute"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -28,6 +29,7 @@ class Server {
     }
     routesActivate() {
         this.app.use("/api/public/bill", billRoute_1.default);
+        this.app.use("/api/public/category", categoryRoute_1.default);
     }
     listenServer() {
         this.app.listen(this.app.get("PORT"), () => {

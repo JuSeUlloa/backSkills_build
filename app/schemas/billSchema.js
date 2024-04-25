@@ -6,5 +6,6 @@ const BillSchema = new mongoose_1.Schema({
     descriptionBill: { type: String, required: true },
     valueBill: { type: Number, required: true },
     dateBill: { type: Date, required: true },
+    codCategory: { type: mongoose_1.Types.ObjectId, ref: "Category", required: true }
 });
 exports.default = (0, mongoose_1.model)("Bill", BillSchema, "Bill");
