@@ -10,6 +10,11 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const connexionDB_1 = __importDefault(require("../connexion/connexionDB"));
 const billRoute_1 = __importDefault(require("../../app/bills/route/billRoute"));
 const categoryRoute_1 = __importDefault(require("../../app/category/route/categoryRoute"));
+const accessRoute_1 = __importDefault(require("../../app/access/route/accessRoute"));
+const registerRoute_1 = __importDefault(require("../../app/register/route/registerRoute"));
+const roleRoute_1 = __importDefault(require("../../app/role/route/roleRoute"));
+const userRoute_1 = __importDefault(require("../../app/user/route/userRoute"));
+const security_1 = __importDefault(require("../../middleware/security"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -28,8 +33,15 @@ class Server {
         }));
     }
     routesActivate() {
+        /* Public Routes */
         this.app.use("/api/public/bill", billRoute_1.default);
+        this.app.use("/api/public/access", accessRoute_1.default);
+        this.app.use("/api/public/register", registerRoute_1.default);
         this.app.use("/api/public/category", categoryRoute_1.default);
+        /* Private routes */
+        this.app.use("/api/private/inclock", security_1.default.verifyToken, accessRoute_1.default);
+        this.app.use("/api/public/role", roleRoute_1.default);
+        this.app.use("/api/public/user", userRoute_1.default);
     }
     listenServer() {
         this.app.listen(this.app.get("PORT"), () => {
