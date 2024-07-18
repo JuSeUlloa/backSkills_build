@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const sharp_1 = __importDefault(require("sharp"));
+const deasync_1 = __importDefault(require("deasync"));
 class ManageImage {
     static generateMiniature(privateImageName, miniatureImage, size) {
         let awaitTmp = true;
@@ -18,7 +19,7 @@ class ManageImage {
             }
         });
         while (awaitTmp) {
-            require("deasync").sleep(250);
+            deasync_1.default.sleep(250);
         }
         return dataSharp;
     }
