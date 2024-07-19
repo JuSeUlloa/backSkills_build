@@ -12,6 +12,7 @@ class RegisterRouter {
     }
     loadRoutes() {
         this.apiRouteRegister.post("/user", registerContoller_1.default.registerUser);
+        this.apiRouteRegister.post("/emailCheck", registerContoller_1.default.verify);
     }
 }
 const registerRouter = new RegisterRouter();

@@ -17,6 +17,7 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const accessSchema_1 = __importDefault(require("../../schemas/accessSchema"));
 const userSchema_1 = __importDefault(require("../../schemas/userSchema"));
 const accessVerifyController_1 = __importDefault(require("../../shared/controller/accessVerifyController"));
+const inputSchema_1 = __importDefault(require("../../schemas/inputSchema"));
 class AccessDao {
     static validateUser(objAccess) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -28,6 +29,7 @@ class AccessDao {
                 if (bcryptjs_1.default.compareSync(objAccess.passwordAccess, objTmp.passwordAccess)) {
                     action = 1;
                     yield accessSchema_1.default.updateOne({ codUser: objTmp.codUser }, { $set: { uuidAccess: nanoid_1.default.nanoid(20) } });
+                    yield inputSchema_1.default.create({ codAccess: objTmp._id });
                     exist = yield userSchema_1.default.findById(objTmp.codUser).select({ _id: 1, nameUser: 1, lastNameUser: 1, privatePhotoUser: 1 }).populate('codRole').exec();
                     sesionData = exist;
                 }

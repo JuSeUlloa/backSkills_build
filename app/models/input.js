@@ -8,3 +8,4 @@ class Input {
     }
 }
 exports.Input = Input;
+exports.default = Input;
