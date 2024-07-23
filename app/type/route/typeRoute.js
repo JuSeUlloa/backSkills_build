@@ -15,7 +15,7 @@ class TypeRoute {
         this.apiTypeRoute.get("/one/:codType", typeController_1.default.getType);
         this.apiTypeRoute.post("/add", typeController_1.default.createType);
         this.apiTypeRoute.put("/update", typeController_1.default.updateType);
-        this.apiTypeRoute.put("/state/:codType/:state", typeController_1.default.deleteType);
+        this.apiTypeRoute.delete("/state/:codType/:state", typeController_1.default.deleteType);
         this.apiTypeRoute.delete("/delete/:codType", typeController_1.default.deleteType);
     }
 }

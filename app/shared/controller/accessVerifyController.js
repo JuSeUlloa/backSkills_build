@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
-const accessResponse_1 = __importDefault(require("../../schemas/accessResponse"));
+const accessResponse_1 = __importDefault(require("../../models/accessResponse"));
 const var_images_1 = __importDefault(require("../../../config/domain/var_images"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const manageImage_1 = __importDefault(require("../../../config/utilities/functions/manageImage"));
