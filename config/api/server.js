@@ -15,6 +15,7 @@ const registerRoute_1 = __importDefault(require("../../app/register/route/regist
 const roleRoute_1 = __importDefault(require("../../app/role/route/roleRoute"));
 const userRoute_1 = __importDefault(require("../../app/user/route/userRoute"));
 const security_1 = __importDefault(require("../../middleware/security"));
+const typeRoute_1 = __importDefault(require("../../app/type/route/typeRoute"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -42,6 +43,7 @@ class Server {
         this.app.use("/api/private/inclock", security_1.default.verifyToken, accessRoute_1.default);
         this.app.use("/api/public/role", roleRoute_1.default);
         this.app.use("/api/public/user", userRoute_1.default);
+        this.app.use("/api/private/type", security_1.default.verifyToken, typeRoute_1.default);
     }
     listenServer() {
         this.app.listen(this.app.get("PORT"), () => {
