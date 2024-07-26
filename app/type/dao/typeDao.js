@@ -20,7 +20,6 @@ class TypeDao {
                 .then((response) => {
                 res.status(200).json({ message: "Inset Type", _id: response._id });
             }).catch((err) => {
-                console.log(err);
                 res.status(400).json({ message: " Failed register Type" });
             });
         });

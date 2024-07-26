@@ -26,7 +26,7 @@ class ServiceDao {
     }
     static getAll(res) {
         return __awaiter(this, void 0, void 0, function* () {
-            serviceSchema_1.default.find().then((response) => {
+            serviceSchema_1.default.find().populate('codType').exec().then((response) => {
                 res.status(200).json(response);
             }).catch((err) => {
                 res.status(400).json({ message: "Failed to load data" });
@@ -35,7 +35,7 @@ class ServiceDao {
     }
     static getOne(res, codService) {
         return __awaiter(this, void 0, void 0, function* () {
-            serviceSchema_1.default.findById(codService).then((response) => {
+            serviceSchema_1.default.findById(codService).populate('codType').exec().then((response) => {
                 res.status(200).json(response);
             }).catch((err) => {
                 res.status(400).json({ message: "Failed to load Service" });
